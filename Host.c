@@ -2,12 +2,13 @@
 #include<stdlib.h>
 #include<string.h>
 
-int i,j;
+int i,j, main_exit;
 
 void menu();
 void new_entry();
+void closer();
 
-
+//-----------------------------------------------------------------------------------------------------------
 struct {
 
     char name[60];
@@ -20,10 +21,10 @@ struct {
     int phone;
     char hostel_name[6];
     char roll_no[10];
-
+    
     }add,upd,check,rem,sort;
 
-
+//----------------------------------------------------------------------------------------------------------
 int main()
 {
 	
@@ -31,7 +32,7 @@ int main()
   return 0;
 }
 
-
+//-----------------------------------------------------------------------------------------------------------
 void menu()
 {  
 system("CLS");
@@ -51,23 +52,24 @@ system("CLS");
         default:menu();
     }
 }
+//------------------------------------------------------------------------------------------------------------
 void new_entry()
 {
 	system("CLS");
-    int choice;
+    int choice ;
     
-FILE *ptr,*hostel;
+ FILE *ptr,*hostel;
     ptr=fopen("record.dat","a+");
     roll_no:
     
     printf("\t\t\t ADD STUDENTS DATA ");
     printf("\nEnter your roll number:");
     scanf("%s",check.roll_no);
-    while(fscanf(ptr,"%s %s %d %s %d %s %s %d %s %s\n",add.roll_no, add.name,  add.city, &add.phone, add.mail_id, add.father_name, &add.father_phone, add.room_no, add.hostel_name)!=EOF)
-    {`         if (strcmp(check.roll_no,add.roll_no)==0)
+    while(fscanf(ptr,"%s %s %d %s %d %s %s %d %s %s\n",add.roll_no, add.name, &add.age, add.city, &add.phone, add.mail_id, add.father_name, &add.father_phone, add.room_no, add.hostel_name)!=EOF)
+    { if (strcmp(check.roll_no,add.roll_no)==0)
             {printf("Students roll no. already in use!");
              goto roll_no;
-        }
+            }
     }
 
     strcpy(add.roll_no,check.roll_no);
@@ -93,27 +95,44 @@ FILE *ptr,*hostel;
        
 	
 		//adding student roll no. to hostels' list
-	// if(strcmp(add.hostel_name,"BH-1")==0)
-	// {
-	// 	hostel=fopen("BH-1.dat","a+");
-	// 	fprintf(hostel, "%s\n", add.roll_no);
-	// 	fclose(hostel);		
-	// }
-	// else if(strcmp(add.hostel_name,"BH-2")==0)
-	// {
-	// 	hostel=fopen("BH-2.dat","a+");
-	// 	fprintf(hostel, "%s\n", add.roll_no);
-	// 	fclose(hostel);		
-	// }
-	// else if(strcmp(add.hostel_name,"BH-3")==0)
-	// {
-	// 	hostel=fopen("BH-3.dat","a+");
-	// 	fprintf(hostel, "%s\n", add.roll_no);
-	// 	fclose(hostel);		
-	// }
-	// else if(strcmp(add.hostel_name,"GH-1")==0)
-	// {
-	// 	hostel=fopen("GH-1.dat","a+");
-	// 	fprintf(hostel, "%s\n", add.roll_no);
-	// 	fclose(hostel);		
+	if(strcmp(add.hostel_name,"BH-1")==0)
+	{
+		hostel=fopen("BH-1.dat","a+");
+		fprintf(hostel, "%s\n", add.roll_no);
+		fclose(hostel);		
+	}
+	else if(strcmp(add.hostel_name,"BH-2")==0)
+	{
+		hostel=fopen("BH-2.dat","a+");
+		fprintf(hostel, "%s\n", add.roll_no);
+		fclose(hostel);		
+	}
+	else if(strcmp(add.hostel_name,"BH-3")==0)
+	{
+		hostel=fopen("BH-3.dat","a+");
+		fprintf(hostel, "%s\n", add.roll_no);
+		fclose(hostel);		
+	}
+	else if(strcmp(add.hostel_name,"GH-1")==0)
+	{
+		hostel=fopen("GH-1.dat","a+");
+		fprintf(hostel, "%s\n", add.roll_no);
+		fclose(hostel);		
 	 }
+     fclose(ptr);
+    printf("\nStudent added successfully!");
+    add_invalid:
+    printf("\n\n\n\t\tEnter 1 to go to the main menu and 0 to exit:");
+    scanf("%d",&main_exit);
+    if (main_exit==1)
+    
+        menu();
+    else if(main_exit==0)
+            closer();
+    else
+        {
+            printf("\nInvalid!\a");
+            goto add_invalid;
+        }
+}
+}

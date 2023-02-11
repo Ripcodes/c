@@ -95,7 +95,7 @@ void sorter()
     	case 2: hostel=fopen("BH-2.dat","a+");break;
     	case 3: hostel=fopen("BH-3.dat","a+");break;
     	case 4: hostel=fopen("GH-1.dat","a+");break;
-    	default: sorter();
+    	default: printf("Enter vallid hostel name");
     }
     while(fscanf(hostel,"%s\n",check.roll_no)!=EOF)
     {
