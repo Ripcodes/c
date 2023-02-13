@@ -35,13 +35,11 @@ int main()
 //-----------------------------------------------------------------------------------------------------------
 void menu()
 {  
-system("CLS");
+//system("CLS");
     int choice;
-    printf("\t\t\t__________________________________");
-    printf("\n\n\t\t\t || HOSTEL MANAGEMENT SYSTEM  ||");
-    printf("\n\t\t\t__________________________________");
-    printf("\n\n\n\n\n\t\t || WELCOME TO THE MAIN MENU  ||");
-    printf("\n\n\t\t1>> Enter new Student's data\n\t\t2>> Update information of existing account\n\t\t3>> Check the details of existing account\n\t\t4>> View all Students of a particlar Hostel\n\t\t5>> Removing existing account\n\t\t6>> View all students list\n\t\t7>> Exit\n\n\n\n\n\t\t Enter your choice:");
+    printf("\t\t\t---------------------------------------------------------------------\n\t\t\t  || ✪ ✪   ℍ 𝕆 𝕊 𝕋 𝔼 𝕃   𝕄 𝔸 ℕ 𝔸 𝔾 𝔼 𝕄 𝔼 ℕ 𝕋   𝕊 𝕐 𝕊 𝕋 𝔼 𝕄   ✪ ✪ ||\n\t\t\t---------------------------------------------------------------------");
+    printf("\n\n\n\n\n\t   ▓▓▓▓▓▓  WELCOME TO THE MAIN MENU  ▓▓▓▓▓▓ ");
+    printf("\n\n\t\t1] Enter new Student's data\n\t\t2] Check the details of existing account\n\t\t3] View all Students of a particlar Hostel\n\t\t4] Removing existing account\n\t\t5] View all students list\n\t\t6] Exit\n\n\n\n\n\t\t Enter your choice:");
     scanf("%d",&choice);
 
     switch(choice)
@@ -55,7 +53,7 @@ system("CLS");
 //------------------------------------------------------------------------------------------------------------
 void new_entry()
 {
-	system("CLS");
+	//system("CLS");
     int choice ;
     
  FILE *ptr,*hostel;
@@ -125,14 +123,6 @@ void new_entry()
     printf("\n\n\n\t\tEnter 1 to go to the main menu and 0 to exit:");
     scanf("%d",&main_exit);
     if (main_exit==1)
+      menu();
     
-        menu();
-    else if(main_exit==0)
-            closer();
-    else
-        {
-            printf("\nInvalid!\a");
-            goto add_invalid;
-        }
-}
 }
