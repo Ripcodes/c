@@ -1,129 +1,386 @@
-#include<stdio.h>
-void main() 
+#include<stdio.h> 
+#include<string.h> 
+#include<stdlib.h>
+#define MAX_ROOMS 30
+#define MAX_NAME 50
+void initRooms();
+void printRooms();
+void bookRoom();
+struct acc_holder
 {
-    int choice , ch2;
-    printf("\n || Welcome to Menue ||\n\n Enter your choice \n 1.Vej fod \n 2.Non-vej \n 3.Water \n 4.Coldring\n");
-    scanf("%d",&choice);
-    switch(choice)
-    { case 1:
-         { printf("\n Welcome to vej menue \n \n Enter your choice");
-           printf("\n 1.masalapa \n 2.puri bhaji \n 3.pulaw \n 4.----- \n 5.----- \n 6.----\n");
-           scanf("%d",&ch2);
-           switch (ch2)
-            {
-              case 1:
-               printf("Prise of masalapa -------");
-              break;
-              case 2:
-              printf("Prise of puri bhaj ------");
-              break;
-              case 3:
-               printf("Prise of -----    -----");
-              break;
-              case 4:
-              printf("Prise of ------------");
-              break;
-              case 5:
-               printf("Prise of -----------");
-              break;
-              case 6:
-              printf("Prise of ------------");
-              break;
-              default:
-              printf(" Enter vallid datails");
-              break;
-            } break;}
-       case 2:
-            {printf("\n Welcome to Non-vej menue");
-             printf("\n1.-----\n 2.----\n 3.---- \n 4.----- \n 5.----- \n 6.----\n");
-             scanf("%d",&ch2);
-             switch (ch2)
-             {
-              case 1:
-               printf("Prise of -------");
-              break;
-              case 2:
-              printf("Prise of ------");
-              break;
-              case 3:
-               printf("Prise of -----    -----");
-              break;
-              case 4:
-              printf("Prise of ------------");
-              break;
-              case 5:
-               printf("Prise of -----------");
-              break;
-              case 6:
-              printf("Prise of ------------");
-              break;
-              default:
-              printf(" Enter vallid datails");
-              break;
-            } break;
+long int acc_num;
+char name[30];
+char bal;
+}b[6]; 
+int staff()
+{ void abc();
+int i;
+for(i=0;i<2;i++)
+{
+printf("\n Enter name = ");
+scanf("%s",b[i].name);
+printf("\n Enter adhar number = ");
+scanf("%ld",&b[i].acc_num);
+printf("\n Enter position = ");
+scanf("%s",&b[i].bal);
+}
+for (i = 0; i < 2; i++)
+{printf("\n\t Name : %s", b[i].name);
+printf("\n\t ADHAR NO: %ld \n\n", b[i].acc_num);
+} 
+room();// admin function 
+return 0;
+}
+ void abc(){
+  int x,i;
+ char name;
+  printf("\n\n\t1]search by name \n\n\t2] search by position\n\t: ");
+  scanf("%d",&x);
+  switch(x)
+ {  case 1:
+     printf("\n\n\tENTER NAME = ");
+     scanf("%s",name);
+    for(i=0;i<6;i++){
+    if (strcmp(name,b[i].name)==0)
+      printf("\n\n\tthe name is %s",b[i].name);
+      printf("\n\n\tthe adhar no. is%ld",b[i].acc_num);
+      printf("the position is :%s",b[i].bal);
+    }}
+         
+}
 
+ int menu(),room(),check(),lunch(),k(),staff(),china(),drink();//differend function
+ void admin(),nasta();
+ void bookRoom();
+ void initRooms(); 
+ int room()// all data of rooms storing {}
+{  
+      int ch;
+    printf("-----------------------------------------");     
+    printf("\n## Ⓦ Ⓔ Ⓛ Ⓒ Ⓞ Ⓜ Ⓔ Ⓣ Ⓞ Ⓐ Ⓓ Ⓜ Ⓘ Ⓝ Ⓟ Ⓐ Ⓝ Ⓔ Ⓛ ##\n------------------------------------------\n\t[1] ᴇɴᴛᴇʀ ɴᴇᴡ sᴛᴀғғ ᴅᴇᴛᴀɪʟs  \n\t[2] sᴇᴀʀᴄʜ ᴇxɪsᴛɪɴɢ sᴛᴀғғ ᴅᴇᴛᴀɪʟs\n\n\t(0)BACK \n\n");
+    printf("------------------------------------------\n\t:"); 
+  scanf("%d",&ch); 
+  switch(ch) 
+  { 
+  case 1: 
+     staff();
+  break; 
+     case 2:
+    abc();
+     break;
+  case 0: 
+  menu(); 
+ break; 
+  default:
+  room();
+  break; 
+    } 
+  return 0; 
+ } 
+ int menu() //main menu function 
+  {   
+  int ch; 
+     printf("\n\n********************************************\n");
+	printf("*                                               *\n");
+	printf("*       -----------------------------           *\n");
+	printf("*            𝓦𝓔𝓛𝓒𝓞𝓜𝓔 𝓣𝓞 𝓗𝓞𝓣𝓔𝓛 𝓜𝓘𝓣\n\t\t(𝔹-𝕋𝕖𝕔𝕙 ℍ𝕠𝕥𝕖𝕝𝕨𝕒𝕝𝕒)              *\n");
+	printf("*       -----------------------------           *\n");
+	printf("*                                              *\n");
+	printf("*******************************************\n\n\n");
+    printf("-----------------------------------------");
+    printf("\n\n>>>\tFor ADMIN access enter --> [1] <<<\n");
+    printf("-----------------------------------------");
+    printf("\n>>>\tFor USER access enter --> \t<<<");
+    printf("\n\n\t[2] ENQUERY RELATED ROOMS\n\n\t[3] LUNCH DINNER \n\n\t[4] DRINKS \n\n ");
+    printf("-----------------------------------------");
+    printf("\n\t>> ");
+        scanf("%d",&ch); 
+  switch(ch) 
+  { 
+ case 1: 
+     admin ();
+  // redirect to Hotel 
+ break; 
+case 2: 
+  k();
+ break; 
+ case 3:
+     china();
+     break;
+    case 4:
+    drink();
+    break; 
+  default : 
+  menu(); 
+  break; 
+  
+  }  
+  return 0; 
+  } 
+  
+ //admin function 
+ void admin(){
+        char pass[]="mitan";
+        char pass1[10];
+        printf(".........................................");
+       printf("\n\n\tℍ𝔼𝕃𝕃𝕆! 𝕎𝔼𝕃ℂ𝕆𝕄𝔼 𝕋𝕆 𝔸𝔻𝕄𝕀ℕ ℙ𝔸ℕ𝔼𝕃 \n");
+       printf(".........................................");    
+       printf("\n\ℰ𝒩𝒯ℰℛ 𝒯ℋℰ 𝒫𝒜𝒮𝒮𝒲𝒪ℛ𝒟 = ");
+       scanf("%s",pass1);
+      if(strcmp(pass,pass1)==0){ 
+       printf("\n\n\t*ACCESS GRANTED!*\n");
+      room();
+      }
+     else{  printf("\n\n\t wrong password..try again");
 
-            }
-         case 3:
-         { printf("\n Welcome to water menue \n \n Enter your choice");
-           printf("\n 1.masalapa \n 2.puri bhaji \n 3.pulaw \n 4.----- \n 5.----- \n 6.----\n");
-           scanf("%d",&ch2);
-           switch (ch2)
-            {
-              case 1:
-               printf("Prise of masalapa -------");
-              break;
-              case 2:
-              printf("Prise of puri bhaj ------");
-              break;
-              case 3:
-               printf("Prise of -----    -----");
-              break;
-              case 4:
-              printf("Prise of ------------");
-              break;
-              case 5:
-               printf("Prise of -----------");
-              break;
-              case 6:
-              printf("Prise of ------------");
-              break;
-              default:
-              printf(" Enter vallid datails");
-              break;
-            } break;}
-       case 4:
-            {printf("\n Welcome to colddrink menue \n \n Enter your choice");
-             printf("\n1.-----\n 2.----\n 3.---- \n 4.----- \n 5.----- \n 6.----\n");
-             scanf("%d",&ch2);
-             switch (ch2)
-             {
-              case 1:
-               printf("Prise of -------");
-              break;
-              case 2:
-              printf("Prise of ------");
-              break;
-              case 3:
-               printf("Prise of -----    -----");
-              break;
-              case 4:
-              printf("Prise of ------------");
-              break;
-              case 5:
-               printf("Prise of -----------");
-              break;
-              case 6:
-              printf("Prise of ------------");
-              break;
-              default:
-              printf(" Enter vallid datails");
-              break;
-            } break;
+    }}
 
+ int main ()//main function 
+ { 
+void initRooms();
+void printRooms();
+void bookRoom();
+   int k();
+    void nasta();
+    int drink();
+  int choice; //declaring variable 
+ 
 
-            }
-    
-     }
-      
+menu();
+ }   
+int drink()
+{
+ int a,qty,rate,v,total;
+ printf("\n\n\t<<<< MENU CARD >>>\n\t*Select your drink* \n\n\t1].COFFEE 10ru \n\t2].TEA 5ru\n\t3].COLD COFFEE 15ru\n\t4].MILK SHAKE 25ru\n\t5].STALK 30ru\n");
+ scanf("%d",&a);
+ switch(a)
+ {
+  case 1:
+    printf("\nYou have selected Coffee.\n Enter the quantity :\n\t");
+    scanf("%d",&qty);
+    rate=10;
+    total=qty*rate;
+    printf("\n pay Total amount :%d\n\t:",total);
+    scanf("%d",&v);
+    if(v==total)
+    printf("\n\n\torder placed ! thank you!");
+    else
+    printf("\n\tsorry try again\n\n");
+    drink();
+    break;
+  case 2:
+    printf("\nYou have selected Tea.\n Enter the quantity :");
+    scanf("%d",&qty);
+    rate=5;
+    total=qty*rate;
+    printf("\n pay Total amount :%d\n\t:",total);
+    scanf("%d",&v);
+    if(v==total)
+    printf("\n\n\torder placed ! thank you!");
+    else
+    printf("\n\tsorry try again\n\n");
+    drink();
+    break;
+  case 3:
+    printf("\nYou have selected Cold coffee.\n Enter the quantity :");
+    scanf("%d",&qty);
+    rate=15;
+    total=qty*rate;
+    printf("\n pay Total amount :%d\n\t:",total);
+    scanf("%d",&v);
+    if(v==total)
+    printf("\n\n\torder placed ! thank you!");
+    else
+    printf("\n\tsorry try again\n\n");
+    drink();
+    break;
+  case 4:
+    printf("\nYou have selected Milk shake.\n Enter the quantity :");
+    scanf("%d",&qty);
+    rate=25;
+    total=qty*rate;
+    printf("\n pay Total amount :%d\n\t:",total);
+    scanf("%d",&v);
+    if(v==total)
+    printf("\n\n\torder placed ! thank you!");
+    else
+    printf("\n\tsorry try again\n\n");
+    drink();
+    break;
+  case 5:
+    printf("\nYou have selected Stalc.\n Enter the quantity :");
+    scanf("%d",&qty);
+    rate=30;
+    total=qty*rate;
+    printf("\n pay Total amount :%d\n\t:",total);
+    scanf("%d",&v);
+    if(v==total)
+    printf("\n\n\torder placed ! thank you!");
+    else
+    printf("\n\tsorry try again\n\n");
+    drink();
+    break;
+  default:
+    printf("\nSorry Unavailable...%ds",a);
+    break;
+ }
+return 0;
+}
+struct Room {
+    int roomNumber;
+    int isBooked;
+    char guestName[MAX_NAME];
+};
+  struct Room rooms[MAX_ROOMS];
+ void bookRoom(), initRooms();
+int k() {
+   void bookRoom(),initRooms();
+    int option,p;
+   void initRooms();
+
+    do {
+        printf("\nHotel Room Booking System\n");
+        printf("1. View Rooms\n");
+        printf("2. Book Room\n");
+        printf("3. Quit\n");
+        printf("Enter your option: ");
+        scanf("%d", &option);
+
+        switch (option) {
+            case 1:
+              printRooms();
+                break;
+            case 2:
+            bookRoom();
+                break;
+            case 3:
+                printf("\n\tExiting program...\n");
+                menu();
+                break;
+            default:
+                printf("Invalid option. Try again.\n");
+                break;
+        }
+    } while (option != 3);
+
+    return 0;
+}
+
+// Initializes rooms to default values
+void initRooms() {
+    int i;
+    for (i = 0; i < MAX_ROOMS; i++) {
+        rooms[i].roomNumber = i + 1;
+        rooms[i].isBooked = 0;
+        strcpy(rooms[i].guestName, "");
     }
+}
+
+// Prints current status of rooms
+void printRooms() {
+    int i;
+    printf("\nRoom No.\tBooked\tGuest Name\n");
+    for (i = 0; i < MAX_ROOMS; i++) {
+        printf("%d\t\t%d\t%s\n", rooms[i].roomNumber, rooms[i].isBooked, rooms[i].guestName);
+    }
+}
+
+// Allows user to book a room
+void bookRoom() {
+    int roomNumber, i,p;
+    char guestName[MAX_NAME];
+
+    printf("Enter room number: ");
+    scanf("%d", &roomNumber);
+
+    roomNumber--; // Array index starts at 0
+    if (rooms[roomNumber].isBooked == 1) {
+        printf("Room is already booked.\n");
+    } else {
+        rooms[roomNumber].isBooked = 1;
+        printf("Enter your name: ");
+        scanf("%s", guestName);
+        printf("\n\nENTER ADHAR NUMBER :\n");
+        scanf("%d",&p);
+        strcpy(rooms[roomNumber].guestName, guestName);
+        printf("\n\n\tRoom booked successfully.\n");
+    }
+}
+int china()
+{
+ int a,qty,rate,v,total;
+ printf("\n\n\t<<<< MENU CARD >>>\n\t*Select your dish* \n\n\t1].TANDUR WITH PANIR 150ru \n\t2].CHICKEN BIRYANI 200ru\n\t3].VEG THALI 150ru\n\t4].CHIKAN HANDI 250ru\n\t5].DAL BATI 300ru\n");
+ scanf("%d",&a);
+ switch(a)
+ {
+  case 1:
+    printf("\nYou have selected tandur with panir.\n Enter the quantity :\n\t");
+    scanf("%d",&qty);
+    rate=150;
+    total=qty*rate;
+    printf("\n pay Total amount :%d\n\t:",total);
+    scanf("%d",&v);
+    if(v==total)
+    printf("\n\n\torder placed ! thank you!");
+    else
+    printf("\n\tsorry try again\n\n");
+    drink();
+    break;
+  case 2:
+    printf("\nYou have selected Chicken biryani.\n Enter the quantity :");
+    scanf("%d",&qty);
+    rate=200;
+    total=qty*rate;
+    printf("\n pay Total amount :%d\n\t:",total);
+    scanf("%d",&v);
+    if(v==total)
+    printf("\n\n\torder placed ! thank you!");
+    else
+    printf("\n\tsorry try again\n\n");
+    drink();
+    break;
+  case 3:
+    printf("\nYou have selected veg thali.\n Enter the quantity :");
+    scanf("%d",&qty);
+    rate=150;
+    total=qty*rate;
+    printf("\n pay Total amount :%d\n\t:",total);
+    scanf("%d",&v);
+    if(v==total)
+    printf("\n\n\torder placed ! thank you!");
+    else
+    printf("\n\tsorry try again\n\n");
+    drink();
+    break;
+  case 4:
+    printf("\nYou have selected Chicken handi.\n Enter the quantity :");
+    scanf("%d",&qty);
+    rate=250;
+    total=qty*rate;
+    printf("\n pay Total amount :%d\n\t:",total);
+    scanf("%d",&v);
+    if(v==total)
+    printf("\n\n\torder placed ! thank you!");
+    else
+    printf("\n\tsorry try again\n\n");
+    drink();
+    break;
+  case 5:
+    printf("\nYou have seleccted dal bati.\n Enter the quantity :");
+    scanf("%d",&qty);
+    rate=300;
+    total=qty*rate;
+    printf("\n pay Total amount :%d\n\t:",total);
+    scanf("%d",&v);
+    if(v==total)
+    printf("\n\n\torder placed ! thank you!");
+    else
+    printf("\n\tsorry try again\n\n");
+    china();
+    break;
+  default:
+    printf("\nSorry Unavailable...%ds",a);
+    break;
+ }
+return 0;
+}

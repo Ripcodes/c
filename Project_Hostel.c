@@ -7,6 +7,7 @@ int i,j, main_exit;
 void menu();
 void new_entry();
 void view_list();
+void see();
 void closer();
 
 //-----------------------------------------------------------------------------------------------------------
@@ -39,7 +40,7 @@ void menu()
     int choice;
     printf("\n\n\t\t\t---------------------------------------------------------------------\n\t\t\t  || ✪ ✪   ℍ 𝕆 𝕊 𝕋 𝔼 𝕃   𝕄 𝔸 ℕ 𝔸 𝔾 𝔼 𝕄 𝔼 ℕ 𝕋   𝕊 𝕐 𝕊 𝕋 𝔼 𝕄   ✪ ✪ ||\n\t\t\t---------------------------------------------------------------------");
     printf("\n\n\n\n\n\t   ▓▓▓▓▓▓  𝐖 𝐄 𝐋 𝐂 𝐎 𝐌 𝐄   𝐓 𝐎   𝐓 𝐇 𝐄   𝐌 𝐀 𝐈 𝐍   𝐌 𝐄 𝐍 𝐔  ▓▓▓▓▓▓ ");
-    printf("\n\n\t\t1] Enter new Student's data\n\t\t2] Check the details of existing account\n\t\t3] View all students list\n\t\t4] Removing existing account\n\t\t5] Exit\n\n\n\n\n\t\t Enter your choice:");
+    printf("\n\n\t\t1] Enter new Student's data\n\t\t2] view all students list\n\t\t3] Check the details of existing account\n\t\t4] Removing existing account\n\t\t5] Exit\n\n\n\n\n\t\t Enter your choice:");
     scanf("%d",&choice);
 
     switch(choice)
@@ -47,6 +48,8 @@ void menu()
         case 1:new_entry();
         break;
         case 2:view_list();
+        break;
+        case 3:see();
         break;
         default:menu();
     }
@@ -57,7 +60,7 @@ void new_entry()
     int choice ;
     FILE *ptr,*hostel;
     ptr=fopen("record.dat","a+");
-  // roll_no:
+   roll_no:
     
     printf("\n\n\t\t\t|| ADD STUDENTS DATA ||");
     printf("\n Enter your roll number:");
@@ -65,7 +68,7 @@ void new_entry()
     while(fscanf(ptr,"%s %s %d %s %d %s %s %d %s %s\n",add.roll_no, add.name, &add.age, add.city, &add.phone, add.mail_id, add.father_name, &add.father_phone, add.room_no, add.hostel_name)!=EOF)
     { if (strcmp(check.roll_no,add.roll_no)==0)
             {printf("Students roll no. already in use!");
-           //  goto roll_no;
+             goto roll_no;
             }
     }
 
@@ -86,7 +89,7 @@ void new_entry()
     scanf("%d",&add.father_phone);
     printf("\n Enter your room no.:");
     scanf("%s",add.room_no);
-    printf("\n Enter your hostel name from BH-1, BH-2, BH-3, GH-1 :");
+    printf("\n Enter your hostel name from BH-1, BH-2, BH-3 :");
     scanf("%s",add.hostel_name);
        
 	
@@ -117,6 +120,8 @@ void new_entry()
 	 }
      fclose(ptr);
     printf("\n\n𝐒𝐭𝐮𝐝𝐞𝐧𝐭 𝐚𝐝𝐝𝐞𝐝 𝐬𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 !\n\n\n");
+    
+    printf("Enter 1 for menu");
     scanf("%d",&main_exit);
     if (main_exit==1)
       menu();
@@ -132,7 +137,7 @@ void view_list()
     
     printf("\nROLL NO.\tNAME\t\t\tcity\t\t\tPHONE\n");
 
-    while(fscanf(view,"%s %s %d %s %d %s %s %d %s %s\n",add.roll_no, add.name, &add.age, add.city, &add.phone, add.mail_id, add.father_name, &add.father_phone, add.room_no, add.hostel_name)!=EOF)
+    while(fscanf(%s %s %d %s %d %s %s %d %s %s\n",add.roll_no, add.name, &add.age, add.city, &add.phone, add.mail_id, add.father_name, &add.father_phone, add.room_no, add.hostel_name)!=EOF)
        {
            printf("\n%8s\t %10s\t\t\t %10s\t\t %d",add.roll_no,add.name,add.city,add.phone);
            test++;
@@ -143,16 +148,14 @@ void view_list()
         {   
             printf("\nNO RECORDS!!\n");}
 
-             
-
     view_list_invalid:
-     printf("\n\nEnter 1 to go to the main menu :");
+     printf("\n\nEnter 1 to go to the main menu and 0 to exit:");
         scanf("%d",&main_exit);
         
         if (main_exit==1)
             menu();
-        //else if(main_exit==0)
-          //  closer();
+        else if(main_exit==0)
+            closer();
         else
         {
             printf("\nInvalid!\a");
